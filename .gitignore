@@ -1,0 +1,6 @@
+# editor stuff
+.vscode
+
+# python
+__pycache__/
+*.egg-info
