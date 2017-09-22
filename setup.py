@@ -7,7 +7,7 @@ Setup declaration to install Pyckup
 params = dict(
     name='Pyckup',
     version='0.1.0',
-    packages=['pyckup'],
+    packages=['pyckup', 'pyckup.syncers'],
     url='https://github.com/BenjaminSchubert/Pyckup',
     download_url="https://github.com/BenjaminSchubert/Pyckup/tar.gz/0.1",
     license='MIT',
