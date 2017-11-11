@@ -22,7 +22,7 @@ class AbstractSyncer:
             self.destination = config.get(section, "destination")
 
             self.date_format = config.get(section, "date_format", fallback="%Y.%m.%d-%H-%M-%S", raw=True)
-            self.exclude = config.get(section, "exclude")
+            self.exclude = config.get(section, "exclude", fallback="")
         except NoOptionError as exc:
             raise InvalidConfigException(exc.message)
 
