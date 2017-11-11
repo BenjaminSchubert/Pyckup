@@ -8,13 +8,15 @@ from pyckup.exceptions import InvalidConfigException
 
 
 class AbstractSyncer:
-    current_backup_relative_path = "./current"
-
     start_date = None
 
     @property
     def temporary_backup_directory(self):
         return os.path.join(self.destination, "incomplete")
+
+    @property
+    def current_backup_symlink(self):
+        return os.path.join(self.destination, "current")
 
     def __init__(self, config, section):
         try:
@@ -30,7 +32,7 @@ class AbstractSyncer:
         return [
             "rsync",
             "-aAXH",
-            "--link-dest", self.current_backup_relative_path,
+            "--link-dest", self.current_backup_symlink,
             " ".join(["--exclude='{}'".format(excluded.strip()) for excluded in self.exclude.split(",")]),
             self.source + "/",
             self.temporary_backup_directory
