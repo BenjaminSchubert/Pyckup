@@ -29,5 +29,6 @@ class LocalSyncer(AbstractSyncer):
             os.path.join(self.destination, self.start_date)
         )
 
-        os.symlink(os.path.relpath(self.start_date), os.path.join(self.destination, "next-current"))
-        os.rename(os.path.join(self.destination, "next-current"), os.path.join(self.destination, "current"))
+        os.symlink(os.path.join(self.destination, self.start_date), os.path.join(self.destination, "next-current"))
+        os.unlink(self.current_backup)
+        os.rename(os.path.join(self.destination, "next-current"), self.current_backup)

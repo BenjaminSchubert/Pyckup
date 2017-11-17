@@ -2,6 +2,7 @@
 
 import argparse
 from configparser import ConfigParser
+import os
 import sys
 
 from pyckup.exceptions import InvalidConfigException, PyckupException
